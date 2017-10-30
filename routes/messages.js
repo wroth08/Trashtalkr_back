@@ -12,16 +12,22 @@ router.get("/", function(req, res) {
 });
 
 // Get message by id
-router.get("/:id", function(req, res) {
-  let messageId = req.params.id;
-  knex
-    .select("string")
-    .from("message")
-    .where("id", messageId)
-    .then(function(data) {
-      res.json(data);
-    });
-});
+router.get('/:id', function (req, res) {
+  let messageId = req.params.id
+  knex.select('string')
+    .from('message')
+    .where('id', messageId)
+    .then( function (data) {
+      res.json(data)
+    })
+})
+
+//
+// {
+//   'messageID': 2,
+//   'sent_from': 1,
+//   'sent_to': 2,
+// }
 
 // Create a message that is sent to the user.
 router.post("/", function(req, res) {

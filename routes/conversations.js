@@ -16,3 +16,14 @@ router.get('/:id', function (req, res) {
       res.json(data)
     })
 })
+
+// Create a message that is sent to the user.
+// router.post('/', function (req, res) {
+//   let messageID = req.body.messageID
+//   knex.select('string')
+//     .from('message')
+//     .where('message.id', messageId)
+//     .then( function (data) {
+//       insertData['']
+//     })
+// })
