@@ -1,0 +1,31 @@
+{
+  "name": "trashtalkr_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jdulin08/Trashtalkr_back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jdulin08/Trashtalkr_back/issues"
+  },
+  "homepage": "https://github.com/Jdulin08/Trashtalkr_back#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "knex": "^0.13.0",
+    "monk": "^6.0.5",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1",
+    "pg": "^7.3.0"
+  }
+}
