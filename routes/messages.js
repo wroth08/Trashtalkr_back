@@ -1,15 +1,15 @@
-const router = (module.exports = require('express').Router());
-var knex = require('../knex')
-
+const router = (module.exports = require("express").Router());
+var knex = require("../knex");
 
 // Get all messages
-router.get('/', function (req, res) {
-  knex.select('id', 'string')
-    .from('message')
-    .then( data => {
-      res.json(data)
-    })
-})
+router.get("/", function(req, res) {
+  knex
+    .select("id", "string")
+    .from("message")
+    .then(data => {
+      res.json(data);
+    });
+});
 
 // Get message by id
 router.get('/:id', function (req, res) {
@@ -30,12 +30,13 @@ router.get('/:id', function (req, res) {
 // }
 
 // Create a message that is sent to the user.
-router.post('/', function (req, res) {
-  let messageID = req.body.messageID
-  knex.select('string')
-    .from('message')
-    .where('message.id', messageId)
-    .then( function (data) {
-      insertData['']
-    })
-})
+router.post("/", function(req, res) {
+  let messageID = req.body.messageID;
+  knex
+    .select("string")
+    .from("message")
+    .where("message.id", messageId)
+    .then(function(data) {
+      insertData[""];
+    });
+});
