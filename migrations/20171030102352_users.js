@@ -3,7 +3,9 @@ exports.up = function(knex, Promise) {
   table.increments('id');
   table.text('name');
   table.text('password');
-  table.text('email');
+  table.text('username');
+  table.integer('league_id');
+  table.integer('team_id');
 });
 };
 

@@ -7,19 +7,19 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert([
         {name: "Jason",
         password: "Awesome1",
-        email: "jas.dulin@gmail.com"
+        username: "jas.dulin@gmail.com"
         },
         {name: "Tyler",
         password: "Awesome2",
-        email: "tyler.john.torres@gmail.com"
+        username: "tyler.john.torres@gmail.com"
         },
         {name: "Eddy",
         password: "Awesome3",
-        email: "eddycaldas@gmail.com"
+        username: "eddycaldas@gmail.com"
         },
         {name: "Weston",
         password: "Awesome4",
-        email: "weston@gmail.com"
+        username: "weston@gmail.com"
         }
       ]);
     });
