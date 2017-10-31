@@ -3,8 +3,7 @@ var knex = require("../knex");
 
 // Get all messages
 router.get("/", function(req, res) {
-  knex
-    .select("id", "string")
+  knex.select("id", "string")
     .from("message")
     .then(data => {
       res.json(data);
@@ -21,19 +20,6 @@ router.get('/:id', function (req, res) {
       res.json(data)
     })
 })
-
-// Update a custom message that the user created
-// router.put('/:id', function (req, res) {
-//   let messageId = req.params.id
-//   var info = req.body
-//   knex('message')
-//     .where('message.id', messageId)
-//     .update(info)
-//     .returning('*')
-//       .then( () => {
-//         res.json(info);
-//       })
-// })
 
 // Create a custom message as a user
 router.post('/', function (req, res) {
@@ -56,3 +42,16 @@ router.delete('/:id', function (req, res) {
       res.json(data)
     })
 })
+
+// Update a custom message that the user created
+// router.put('/:id', function (req, res) {
+//   let messageId = req.params.id
+//   var info = req.body
+//   knex('message')
+//     .where('message.id', messageId)
+//     .update(info)
+//     .returning('*')
+//       .then( () => {
+//         res.json(info);
+//       })
+// })

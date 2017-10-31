@@ -1,6 +1,14 @@
 const router = (module.exports = require('express').Router());
 var knex = require('../knex')
 
+router.get('/', function (req, res) {
+  knex.select('sent_from', 'sent_to', 'message_id')
+  .from('users_message')
+  .then( function (data) {
+    res.json(data)
+  })
+})
+
 router.get('/:id', function (req, res) {
   let myId = req.params.id
   knex.select('message.string', 'users.name')
@@ -15,25 +23,14 @@ router.get('/:id', function (req, res) {
     .then( function (data) {
       res.json(data)
     })
-    // .then( function (data) {
-    //   let dataSoFar = data
-    //   var sent_from = data[0]['sent_from']
-    //   knex.select('users.name')
-    //     .from('users')
-    //     .where('users.id', sent_from)
-    //     .then( function (data) {
-    //       res.json(data)
-    //     })
-    // })
 })
 
-// Create a message that is sent to the user.
 router.post('/', function (req, res) {
   let messageRow = req.body
-  knex('message')
+  knex('users_message')
     .insert(messageRow)
     .returning('*')
-    .then( () => {
-      res.json('message')
+    .then( function (data) {
+      res.json(data)
     })
 })
