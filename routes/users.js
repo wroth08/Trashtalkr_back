@@ -32,13 +32,10 @@ router.post('/', function (req, res) {
                         res.send('no user matches the username')
                     }
                     let ownerId = check[0].userProfileId
-                    // console.log(ownerId)
                     check = check[0].userName
-                    // console.log(check)
                     let teams = response.leaguesettings.teams
                     let teamcheck = Object.keys(teams).filter( (team) => response.leaguesettings.teams[team].owners[0].ownerId === ownerId)
                     let teamId = teamcheck[0]
-                    // console.log(teamId)
                     if (teamId !== undefined) {
                         row['team_id'] = teamId
                         bcrypt.hash(prepass, saltRounds, function(err, hash) {
@@ -57,5 +54,26 @@ router.post('/', function (req, res) {
             } else {
                 res.send('already exists')
             }
+        })
+})
+
+router.post('/login', function (req, response) {
+    let row = req.body
+    knex.select('password')
+        .from('users')
+        .where('username', row.username)
+        .then( (data) => {
+                hash = data[0].password
+                var bcrypt = require('bcrypt')
+                bcrypt.compare(row.password, hash, function(err, res) {
+                    if (res) {
+                        response.status(200).send('ok')
+                    } else {
+                        response.status(404).send('incorrect username or password')
+                    }
+                })
+        })
+        .catch( (error) => {
+            response.status(404).send('username does not exist')
         })
 })
