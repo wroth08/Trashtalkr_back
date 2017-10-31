@@ -22,21 +22,37 @@ router.get('/:id', function (req, res) {
     })
 })
 
-//
-// {
-//   'messageID': 2,
-//   'sent_from': 1,
-//   'sent_to': 2,
-// }
+// Update a custom message that the user created
+// router.put('/:id', function (req, res) {
+//   let messageId = req.params.id
+//   var info = req.body
+//   knex('message')
+//     .where('message.id', messageId)
+//     .update(info)
+//     .returning('*')
+//       .then( () => {
+//         res.json(info);
+//       })
+// })
 
-// Create a message that is sent to the user.
-router.post("/", function(req, res) {
-  let messageID = req.body.messageID;
-  knex
-    .select("string")
-    .from("message")
-    .where("message.id", messageId)
-    .then(function(data) {
-      insertData[""];
-    });
-});
+// Create a custom message as a user
+router.post('/', function (req, res) {
+  let messageRow = req.body
+  knex('message')
+    .insert(messageRow)
+    .returning('*')
+    .then( (data) => {
+      res.json(data)
+    })
+})
+
+// Delete a user
+router.delete('/:id', function (req, res) {
+  let messageId = req.params.id
+  knex('message')
+    .where('message.id', messageId)
+    .del()
+    .then( (data) => {
+      res.json(data)
+    })
+})

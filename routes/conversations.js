@@ -19,11 +19,11 @@ router.get('/:id', function (req, res) {
 
 // Create a message that is sent to the user.
 // router.post('/', function (req, res) {
-//   let messageID = req.body.messageID
-//   knex.select('string')
-//     .from('message')
-//     .where('message.id', messageId)
-//     .then( function (data) {
-//       insertData['']
+//   let messageRow = req.body
+//   knex('message')
+//     .insert(messageRow)
+//     .returning('*')
+//     .then( () => {
+//       res.json('message')
 //     })
 // })
