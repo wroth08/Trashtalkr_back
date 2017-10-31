@@ -14,6 +14,7 @@ app.use(cors({origin: true}))
 
 app.use('/messages', require('./routes/messages'));
 app.use('/conversations', require('./routes/conversations'))
+app.use('/users', require('./routes/users'))
 
 app.use(notFound)
 app.use(errorHandler)
