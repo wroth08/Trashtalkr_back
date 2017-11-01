@@ -27,7 +27,6 @@ router.post('/', function (req, res) {
                 .then( (response) => {
                     let members = response.leaguesettings.leagueMembers
                     let check = members.filter( (member) => member.userName === row.username)
-                    console.log(check)
                     if (check[0] === undefined) {
                         res.send('no user matches the username')
                     }
@@ -67,7 +66,12 @@ router.post('/login', function (req, response) {
                 var bcrypt = require('bcrypt')
                 bcrypt.compare(row.password, hash, function(err, res) {
                     if (res) {
-                        response.status(200).send('ok')
+                        knex.select('team_id', 'league_id')
+                            .from('users')
+                            .where('username', row.username)
+                            .then( (data) => {
+                                response.status(200).json(data)
+                            })
                     } else {
                         response.status(404).send('incorrect username or password')
                     }
