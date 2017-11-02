@@ -28,7 +28,7 @@ router.post('/', function (req, res) {
                     let members = response.leaguesettings.leagueMembers
                     let check = members.filter( (member) => member.userName === row.username)
                     if (check[0] === undefined) {
-                        res.send('no user matches the username')
+                        res.status(500).send('no user matches the username')
                     }
                     let ownerId = check[0].userProfileId
                     check = check[0].userName
@@ -47,11 +47,11 @@ router.post('/', function (req, res) {
                                 })
                         })
                     } else {
-                        res.send('errrorrrrrrr')
+                        res.status(404).send('errrorrrrrrr')
                     }
                 })
             } else {
-                res.send('already exists')
+                res.status(500).send('already exists')
             }
         })
 })
