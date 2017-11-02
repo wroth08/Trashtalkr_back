@@ -51,7 +51,7 @@ router.post('/', function (req, res) {
                     }
                 })
             } else {
-                res.status(500).send('already exists')
+                res.status(501).send('already exists')
             }
         })
 })
